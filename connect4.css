@@ -1,36 +1,88 @@
 /* game board table */
 
+h2 {
+  /* display: block;*/
+   text-align: center;
+}
+
+#game {
+   display: flex;
+}
+
+#board {
+   position: relative;
+   margin-left: 35%;
+}
+
 #board td {
-    width: 50px;
-    height: 50px;
-    border: solid 1px #666;
-  }
-  
-  /* pieces are div within game table cells: draw as colored circles */
-  
-  .piece {
-    /* TODO: make into circles */
-    margin: 5px;
-    width: 80%;
-    height: 80%;
-    background-color: #bbb;
-    border-radius: 50%;
-    display: inline-block;
-  }
-  
-  .piece.p1{
-  /* TODO: make pieces red/blue,  depending on player 1/2 piece */
-    background-color: red;
-  }
-  .piece.p2{
-    background-color: blue;
-  }
-  /* column-top is table row of clickable areas for each column */
-  
-  #column-top td {
-    border: dashed 1px lightgray;
-  }
-  
-  #column-top td:hover {
-    background-color: gold;
-  }
+ position: absolute;
+ width: 50px;
+ height: 50px;
+ border: solid 1px #666;
+}
+
+/* pieces are div within game table cells: draw as colored circles */
+
+.piece {
+ /* TODO: make into circles */
+ position: absolute;
+ margin: 5px;
+ width: 80%;
+ height: 80%;
+ background-color: #bbb;
+ border-radius: 50%;
+ display: inline-block;
+ animation-name: drop;
+ animation-duration: 0.7s;
+}
+
+.piece#B0 {
+ --h:-200%;
+ --s: 70%;
+}
+.piece#B1 {
+   --h:-300%;
+   --s: 50%;
+}
+.piece#B2 {
+   --h:-400%;
+   --s: 30%;
+}
+.piece#B3 {
+   --h:-500%;
+   --s: 10%;
+}
+.piece#B4 {
+   --h:-600%;
+   --s: -20%;
+}
+.piece#B5 {
+   --h:-700%;
+   --s: -40%;
+}
+
+.piece.p1{
+/* TODO: make pieces red/blue,  depending on player 1/2 piece */
+ background-color: red;
+ 
+}
+.piece.p2{
+ background-color: blue;
+}
+/* column-top is table row of clickable areas for each column */
+/*.piece.drop{
+   transform: translateY(100px);
+} */
+
+#row-top td {
+ border: dashed 1px lightgray;
+}
+
+#row-top td:hover {
+ background-color: gold;
+}
+
+@keyframes drop {
+   0% {transform: translateY(var(--h));
+      margin-top: var(--s);}
+}
